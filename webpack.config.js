@@ -1,6 +1,5 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { plugins } = require("../restaurant-page/webpack.config");
 
 module.exports = {
     mode: "development",

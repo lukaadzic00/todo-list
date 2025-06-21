@@ -1,26 +1,35 @@
 import Project from './project';
 import showProject from './dom';
 
-const btnNewProject = document.querySelector('#project');
-const dialogProject = document.querySelector('#project-dialog');
-const btnConfirm = document.querySelector('#confirm');
-const btnCancel = document.querySelector('#cancel');
-
 function createNewProject() {
     dialogProject.showModal();
-
-    btnCancel.addEventListener('click', () => {
-        dialogProject.cl
-    })
 }
 
-btnNewProject.addEventListener('click', createNewProject);
-btnNewTask.addEventListener('click', createNewTask);
-
-btnConfirm.addEventListener('click', () => {
+function confirmNewProject() {
     const inputName = document.querySelector('input#name-p');
-    const inputDesc = document.querySelector('input#description-p');
+    const inputDesc = document.querySelector('input#desc-p');
     const newProject = new Project(inputName.value, inputDesc.value);
+
+    inputName.value = '';
+    inputDesc.value = '';
         
     showProject(newProject);
-});
+}
+
+function cancelNewProject() {
+    dialogProject.close();
+}
+
+
+
+const btnNewProject = document.querySelector('#new-project');
+const dialogProject = document.querySelector('#project-dialog');
+const btnConfirm = document.querySelector('#confirm-p');
+const btnCancel = document.querySelector('#cancel-p');
+
+const btnNewTask = document.querySelector('#new-task');
+const dialogTask = document.querySelector('#task-dialog'); 
+
+btnNewProject.addEventListener('click', createNewProject);
+btnConfirm.addEventListener('click', confirmNewProject);
+btnCancel.addEventListener('click', cancelNewProject);
