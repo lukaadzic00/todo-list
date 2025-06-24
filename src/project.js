@@ -1,11 +1,13 @@
 export default class Project {
     #name;
     #description;
+    #selected;
     #tasks = [];
 
-    constructor(name, description) {
+    constructor(name, description, selected) {
         this.#name = name;
         this.#description = description;
+        this.#selected = selected;
     }
 
     get name() {
@@ -22,6 +24,14 @@ export default class Project {
 
     set description(value) {
         this.#description = value;
+    }
+
+    get selected() {
+        return this.#selected;
+    }
+
+    set selected(value) {
+        this.#selected = value;
     }
 
     get tasks() {
