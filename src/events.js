@@ -1,6 +1,6 @@
 import Project from './project';
 import Task from './task';
-import { showProject, showAllTasksInProject } from './dom';
+import { showProject, createProjectCard, showAllTasksInProject } from './dom';
 import projectArr from './app';
 
 export default function setupEventListeners() {
@@ -17,8 +17,9 @@ export default function setupEventListeners() {
 
         inputName.value = '';
         inputDesc.value = '';
-            
-        showProject(newProject, projectArr);
+        
+        const card = createProjectCard(newProject, projectArr);
+        showProject(card);
     }
 
     function cancelNewProject() {
@@ -35,6 +36,10 @@ export default function setupEventListeners() {
         const inputTaskDate = document.querySelector('input#date');
         const newTask = new Task(inputTaskName.value, inputTaskDesc.value, inputTaskDate.value);
 
+        inputTaskName.value = '';
+        inputTaskDesc.value = '';
+        inputTaskDate.value = '';
+
         let currentProject;
         for(let i = 0; i < projectArr.length; i++) {
             if(projectArr[i].selected) {
@@ -45,6 +50,10 @@ export default function setupEventListeners() {
 
         currentProject.tasks.push(newTask);
         showAllTasksInProject(currentProject);
+    }
+
+    function cancelNewTask() {
+        dialogTask.close();
     }
 
     const btnNewProject = document.querySelector('#new-project');
