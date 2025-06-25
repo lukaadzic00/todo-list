@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<script defer src="main.js"></script></head>
+<body>
+    <div id="container">
+        <div id="project">
+            <header>
+                <div>Projects</div>
+                <button id="new-project">New project</button>
+            </header>
+            <div id="project-container">
+
+            </div>
+        </div>
+        <div id="todo-list">
+            <header>
+                <div>Tasks</div>
+                <button id="new-task">Add task</button>
+            </header>
+            <div id="task-container">
+                
+            </div>
+        </div>
+    </div>
+
+    <dialog id="project-dialog">
+        <form method="dialog">
+            <label for="name-p">Name: </label><input type="text" id="name-p">
+            <label for="desc-p">Description: </label><input type="text" id="desc-p">
+
+            <button type="submit" value="confirm" id="confirm-p">Confirm</button>
+            <button type="submit" value="cancel" id="cancel-p">Cancel</button>
+        </form>
+    </dialog>
+
+    <dialog id="task-dialog">
+        <form method="dialog">
+            <label for="name-t">Name: </label><input type="text" id="name-t">
+            <label for="desc-t">Description: </label><input type="text" id="desc-t">
+            <label for="date">Select date: </label><input type="date" name="date" id="date">
+            <p>Priority:</p>
+            <label>
+                <input type="radio" name="priority" value="low">
+                Low
+            </label><br>
+            <label>
+                <input type="radio" name="priority" value="medium">
+                Medium
+            </label><br>
+            <label>
+                <input type="radio" name="priority" value="high">
+                High
+            </label>
+
+            <button type="submit" value="confirm" id="confirm-t">Confirm</button>
+            <button type="submit" value="cancel" id="cancel-t">Cancel</button>
+        </form>
+    </dialog>
+</body>
+</html>
