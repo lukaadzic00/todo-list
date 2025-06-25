@@ -1,7 +1,7 @@
 import Project from './project';
 import Task from './task';
 import { showProject, createProjectCard, showAllTasksInProject } from './dom';
-import projectArr from './app';
+import projectArr from './index';
 
 export default function setupEventListeners() {
     
@@ -26,6 +26,16 @@ export default function setupEventListeners() {
         dialogProject.close();
     }
 
+    function resetTaskDialog() {
+        const inputTaskName = document.querySelector('input#name-t');
+        const inputTaskDesc = document.querySelector('input#desc-t');
+        const inputTaskDate = document.querySelector('input#date');
+
+        inputTaskName.value = '';
+        inputTaskDesc.value = '';
+        inputTaskDate.value = '';
+    }
+
     function createNewTask() {
         dialogTask.showModal();
     }
@@ -34,11 +44,10 @@ export default function setupEventListeners() {
         const inputTaskName = document.querySelector('input#name-t');
         const inputTaskDesc = document.querySelector('input#desc-t');
         const inputTaskDate = document.querySelector('input#date');
-        const newTask = new Task(inputTaskName.value, inputTaskDesc.value, inputTaskDate.value);
+        const priority = document.querySelector('input[name="priority"]:checked')
+        const newTask = new Task(inputTaskName.value, inputTaskDesc.value, inputTaskDate.value, priority.value);
 
-        inputTaskName.value = '';
-        inputTaskDesc.value = '';
-        inputTaskDate.value = '';
+        resetTaskDialog();
 
         let currentProject;
         for(let i = 0; i < projectArr.length; i++) {
@@ -53,6 +62,7 @@ export default function setupEventListeners() {
     }
 
     function cancelNewTask() {
+        resetTaskDialog();
         dialogTask.close();
     }
 
@@ -60,16 +70,16 @@ export default function setupEventListeners() {
     const dialogProject = document.querySelector('#project-dialog');
     const btnConfirmProject = document.querySelector('#confirm-p');
     const btnCancelProject = document.querySelector('#cancel-p');
-
     const btnNewTask = document.querySelector('#new-task');
     const dialogTask = document.querySelector('#task-dialog');
     const btnConfirmTask = document.querySelector('#confirm-t');
     const btnCancelTask = document.querySelector('#cancel-t');
 
+
     btnNewProject.addEventListener('click', createNewProject);
     btnConfirmProject.addEventListener('click', confirmNewProject);
     btnCancelProject.addEventListener('click', cancelNewProject);
-
     btnNewTask.addEventListener('click', createNewTask);
     btnConfirmTask.addEventListener('click', confirmNewTask);
+    btnCancelTask.addEventListener('click', cancelNewTask);
 }

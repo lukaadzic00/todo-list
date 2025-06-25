@@ -16,13 +16,20 @@
 #project {
     padding: 15px;
     width: 30%;
-    background-color: red;
+    background-color: lightblue;
+}
+
+#project-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 #todo-list {
     padding: 15px;
     width: 70%;
-    background-color: green;
+    background-color: beige;
 }
 
 header {
@@ -30,6 +37,26 @@ header {
     justify-content: space-between;
 }
 
+header > div {
+    font-size: 30px;
+    text-align: center;
+}
+
+header > button {
+    background-color: cadetblue;
+    border: 1px solid blue;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .selected {
-    background-color: blue;
+    background-color: cadetblue;
+}
+
+#task-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
